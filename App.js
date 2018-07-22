@@ -1,21 +1,55 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import Weather from './Weather';
+import { Ionicons } from '@expo/vector-icons';
 
-export default class App extends React.Component {
+export default class App extends Component {
+
+  state = {
+    isLoaded: true
+  }
+
   render() {
+    const { isLoaded } = this.state;
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!!!</Text>
-      </View>
+
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar  barStyle="light-content" />
+        <View style={styles.container}>
+        { isLoaded ? <Weather/> : (
+          <View style ={styles.loading}>
+            <Text style={styles.loadingText}>getting new weather</Text>
+          </View>)}
+        </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  safeArea:{
+    flex: 1,
+    backgroundColor: "red"
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItem은 보조축이다. flexDirection:column이면 alignItem은 row이고, 반대의 경우도 같다. 
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    flexDirection: "row",
+    flexWrap : "wrap",
+    
   },
+  loading :{
+    flex:1,
+    backgroundColor: "#FDF6AA",
+    justifyContent: "flex-end",
+    paddingLeft:25
+  }
+  ,loadingText:{
+    fontSize:38,
+    marginBottom:100
+  
+  }
 });
