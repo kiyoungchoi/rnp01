@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { LinearGradient } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
+// fontawesome도 넣을수 있다.
 
 export default class Weather extends Component{
     render(){
         return(
             <LinearGradient colors={['#00c6fb', '#005bea']} style={styles.container}>
                 <View style ={styles.upper}>
-                    <Text>Icons here</Text>
+                    <Ionicons color="white" size={144} name="ios-rainy" />
                     <Text style={styles.temp}>35</Text>
                 </View>
                 <View style={styles.lower}>
@@ -26,7 +28,9 @@ const styles = StyleSheet.create({
     upper : {
         flex:1,
         justifyContent:"center",
-        alignItems: "center"
+        alignItems: "center",
+        // 여기서 backgrouundColor를 설정 해줘야, 아이콘이 보인다. parent를 생각한것이다.
+        backgroundColor: "transparent"
     },
     temp:{
         fontSize:38,
