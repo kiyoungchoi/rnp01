@@ -17,13 +17,15 @@ export default class App extends Component {
         });
       },
       error => {
-        console.log(error);
+        this.setState({
+          error:error
+        })
       }
       );
   }
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, error } = this.state;
     return (
 
       <SafeAreaView style={styles.safeArea}>
@@ -66,3 +68,4 @@ const styles = StyleSheet.create({
   
   }
 });
+
