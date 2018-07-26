@@ -44,13 +44,14 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoaded, error } = this.state;
+    const { isLoaded, error, temperature, name } = this.state;
     return (
 
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea}> 
         <StatusBar  barStyle="light-content" />
         <View style={styles.container}>
-        { isLoaded ? <Weather/> : (
+        { isLoaded ? (
+          <Weather weatherName = {name} temp = {Math.floor(temperature - 273.15)} />) : (
           <View style ={styles.loading}>
             <Text style={styles.loadingText}>getting new weather</Text>
             {error ? <Text style={styles.errorText}>{error}</Text> : null}
