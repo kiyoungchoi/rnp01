@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { LinearGradient } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
-import PropTypes from 'prop=types'; 
+// import { MaterialCommunityIcons } from '@expo/vector-icons';
+import PropTypes from 'prop-types'; 
 // fontawesome도 넣을수 있다.
 
 // export default class Weather extends Component{
@@ -69,9 +70,12 @@ const weatherCases = {
 }     
 export default function Weather( {temp, weatherName} ){
 
-    <LinearGradient colors={['#00c6fb', '#005bea']} style={styles.container}>
+    return(
+        <LinearGradient colors={['#00c6fb', '#005bea']} style={styles.container}>
         <View style ={styles.upper}>
             <Ionicons color="white" size={144} name="ios-rainy" />
+            {/*만약에 위에서 바꾸었다면 여기에서*/}
+            {/*<MaterialCommunityIcons color="white" size={144} name = {weatherCases[weatherName].icon} />*/}
             <Text style={styles.temp}>{temp}</Text>
         </View>
         <View style={styles.lower}>
@@ -80,10 +84,11 @@ export default function Weather( {temp, weatherName} ){
         </View>
     </LinearGradient>
 
+    )
 }
 
 Weather.propTypes = {
-    temp : PropTypes.number.isRequired
+    temp : PropTypes.number.isRequired,
     weatherName : PropTypes.string.isReqired
 }
 
